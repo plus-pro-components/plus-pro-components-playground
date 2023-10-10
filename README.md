@@ -5,7 +5,7 @@
 In repo root:
 
 ```sh
-pnpm dev:playground
+pnpm dev 
 ```
 
 ## Build for Prod
@@ -13,5 +13,5 @@ pnpm dev:playground
 In repo root
 
 ```sh
-pnpm build:playground
+pnpm build 
 ```
