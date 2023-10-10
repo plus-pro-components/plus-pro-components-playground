@@ -1,0 +1,8 @@
+build
+src/assets
+public
+dist
+tests/
+coverage
+*.html
+styles

@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "target": "es2018",
+    "module": "esnext",
+    "sourceMap": false,
+    "moduleResolution": "node",
+    "allowJs": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "removeComments": false,
+    "rootDir": ".",
+    "baseUrl": ".",
+    "types": ["vite/client", "./env.d.ts"]
+  },
+  "include": ["src/**/*"],
+  "exclude": ["src/**/__tests__/*"]
+}

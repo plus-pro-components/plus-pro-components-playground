@@ -1,0 +1,25 @@
+{
+  "name": "@plus-pro-components/playground",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "@plus-pro-components/eslint-config": "^0.0.3",
+    "@vitejs/plugin-vue": "^4.3.4",
+    "@vue/repl": "^2.5.8",
+    "eslint": "^8.51.0",
+    "prettier": "^3.0.3",
+    "vite": "^4.4.9"
+  },
+  "dependencies": {
+    "execa": "^8.0.1",
+    "file-saver": "^2.0.5",
+    "jszip": "^3.10.1",
+    "vue": "^3.3.4"
+  }
+}

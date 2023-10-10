@@ -1,0 +1,6 @@
+node_modules/
+dist/
+*.min.css
+src/
+docs/
+index.html
