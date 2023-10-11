@@ -14,13 +14,15 @@
     "@vue/repl": "^2.5.8",
     "eslint": "^8.51.0",
     "prettier": "^3.0.3",
-    "vite": "^4.4.9"
+    "vite": "^4.4.9",
+    "vite-plugin-chunk-split": "^0.4.7"
   },
   "dependencies": {
     "execa": "^8.0.1",
     "file-saver": "^2.0.5",
     "jszip": "^3.10.1",
     "plus-pro-components": "0.0.1-beta.12",
+    "vite-plugin-compression": "^0.5.1",
     "vue": "^3.3.4"
   }
 }

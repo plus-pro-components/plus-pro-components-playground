@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,7 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg" href="/logo.png" />
     <title>PlusProComponents SFC Playground</title>
- 
+
+    <style>
+      .loading {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .loading .loading-image {
+        width: 60px;
+      }
+      .loading .loading-text {
+        text-align: center;
+        color: #0072ff;
+        font-size: 14px;
+        opacity: 0.8;
+      }
+    </style>
+
     <script>
       // process shim for old versions of @vue/compiler-sfc dependency
       window.process = { env: {} }
@@ -21,6 +44,11 @@
     <script type="module" src="/src/main.ts"></script>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <div class="loading">
+        <img src="/loading.gif" alt="" class="loading-image" />
+        <p class="loading-text">加载中...</p>
+      </div>
+    </div>
   </body>
 </html>

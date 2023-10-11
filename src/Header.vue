@@ -123,7 +123,7 @@ function toggleDark() {
         <Download />
       </button>
       <a
-        href="https://github.com/plus-pro-components/plus-pro-components/tree/dev/packages/playground"
+        href="https://github.com/plus-pro-components/plus-pro-components-playground"
         target="_blank"
         title="View on GitHub"
         class="github"
