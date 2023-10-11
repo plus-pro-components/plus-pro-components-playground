@@ -14,7 +14,7 @@
     "removeComments": false,
     "rootDir": ".",
     "baseUrl": ".",
-    "types": ["vite/client", "./env.d.ts"]
+    "types": ["node", "vite/client", "./env.d.ts"]
   },
   "include": ["src/**/*"],
   "exclude": ["src/**/__tests__/*"]

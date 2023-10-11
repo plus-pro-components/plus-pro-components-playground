@@ -42,6 +42,8 @@ async function fetchVersions(): Promise<string[]> {
     return filteredVersions
   } else if (props.pkg === 'typescript') {
     return versions.filter(v => !v.includes('dev') && !v.includes('insiders'))
+  } else if (props.pkg === 'plus-pro-components') {
+    return versions.filter(v => !v.includes('alpha'))
   }
   return versions
 }
@@ -65,7 +67,7 @@ onMounted(() => {
 
 <template>
   <div class="version" @click.stop>
-    <span class="active-version" @click="toggle">
+    <span class="active-version" @click="toggle" :class="props.pkg">
       {{ label }}
       <span class="number">{{ version }}</span>
     </span>
@@ -93,6 +95,16 @@ onMounted(() => {
   position: relative;
   display: inline-flex;
   place-items: center;
+  user-select: none;
+}
+
+.active-version.plus-pro-components {
+  font-weight: 600;
+}
+
+.version + .version .active-version {
+  border-left: 1px solid #ddd;
+  padding-left: 8px;
 }
 
 .active-version .number {

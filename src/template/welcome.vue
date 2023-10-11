@@ -1,10 +1,34 @@
-<script lang="ts" setup>
-import { ref } from 'vue'
-import { PlusInputTag } from 'plus-pro-components'
-
-const data = ref(['tag1', 'tag2'])
-</script>
-
 <template>
-  <PlusInputTag v-model="data" />
+  <h3>PlusRadio 再次点击可以取消</h3>
+  <PlusRadio v-model="state.value" :options="state.options" size="large" @change="change" />
 </template>
+
+<script setup lang="ts">
+import { reactive, watch } from 'vue'
+import type { OptionsRow } from 'plus-pro-components'
+import { PlusRadio } from 'plus-pro-components'
+
+type State = {
+  options: OptionsRow[]
+  value: number
+}
+
+const state = reactive<State>({
+  options: [
+    { label: '选项一', value: 1 },
+    { label: '选项二', value: 2 }
+  ],
+  value: 1
+})
+
+watch(
+  () => state.value,
+  val => {
+    console.log(val, 'val')
+  }
+)
+
+const change = (val: number) => {
+  console.log(val, 'change')
+}
+</script>

@@ -14,14 +14,22 @@ const props = defineProps<{
   dev: boolean
   ssr: boolean
 }>()
-const emit = defineEmits(['toggle-theme', 'toggle-ssr', 'toggle-dev'])
+const emit = defineEmits(['toggle-theme', 'toggle-ssr', 'toggle-dev', 'changePPCVersion'])
 
 // eslint-disable-next-line vue/no-setup-props-destructure
 const { store } = props
 
 const currentCommit = 'latest'
 const vueVersion = ref(`@${currentCommit}`)
-const currentVersion = ref('latest')
+const plusProComponentsVersion = ref('latest')
+
+function setPlusProComponentsVersion(v: string) {
+  emit('changePPCVersion', v)
+  store.state.dependencyVersion = {
+    'plus-pro-components': v
+  }
+  plusProComponentsVersion.value = v
+}
 
 async function setVueVersion(v: string) {
   vueVersion.value = `loading...`
@@ -60,15 +68,16 @@ function toggleDark() {
     </h1>
     <div class="links">
       <VersionSelect
-        v-model="currentVersion"
+        :model-value="plusProComponentsVersion"
         pkg="plus-pro-components"
         label="PlusProComponents Version"
+        @update:model-value="setPlusProComponentsVersion"
       />
-      <!-- <VersionSelect
+      <VersionSelect
         v-model="store.state.typescriptVersion"
         pkg="typescript"
         label="TypeScript Version"
-      /> -->
+      />
       <VersionSelect
         :model-value="vueVersion"
         pkg="vue"
