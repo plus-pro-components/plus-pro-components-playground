@@ -4,7 +4,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, watch } from 'vue'
+import { reactive } from 'vue'
 import type { OptionsRow } from 'plus-pro-components'
 import { PlusRadio } from 'plus-pro-components'
 
@@ -20,13 +20,6 @@ const state = reactive<State>({
   ],
   value: 1
 })
-
-watch(
-  () => state.value,
-  val => {
-    console.log(val, 'val')
-  }
-)
 
 const change = (val: number) => {
   console.log(val, 'change')

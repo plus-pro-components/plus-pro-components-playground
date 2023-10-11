@@ -69,8 +69,6 @@ store
     store.state.mainFile = MAIN_FILE
     store.state.files[MAIN_FILE].hidden = true
     store.state.files[PPC_FILE].hidden = true
-    console.log(store)
-    console.log(store.state.mainFile)
   })
 
 // enable experimental features
