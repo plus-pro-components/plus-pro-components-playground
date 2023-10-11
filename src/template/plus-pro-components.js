@@ -25,8 +25,7 @@ export function setupPlusProComponents() {
 
 export function loadStyle() {
   return new Promise((resolve, reject) => {
-    createLink(resolve, reject, '#STYLE#')
-    // createLink(resolve, reject, 'https://unpkg.com/plus-pro-components/index.css')
+    createLink(resolve, reject, 'https://unpkg.com/plus-pro-components/index.css')
   })
 }
 

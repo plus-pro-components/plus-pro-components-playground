@@ -121,7 +121,7 @@ const changePPCVersion = (v: string = 'latest') => {
   const current = CDN + `/plus-pro-components@${v}`
 
   const link = current + `/index.css`
-  const code = PlusProComponentsTemplate.replace('#STYLE#', link)
+  const code = PlusProComponentsTemplate.replace(CDN + '/plus-pro-components/index.css', link)
   const file = new File(PPC_FILE, code, import.meta.env.DEV)
   store.state.files[PPC_FILE] = file
   compileFile(store, file).then((errs: any) => (store.state.errors = errs))
