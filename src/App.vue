@@ -56,7 +56,8 @@ store.setImportMap({
   imports: {
     ...store.getImportMap().imports,
     'element-plus': CDN + `/element-plus@${version}/dist/index.full.mjs`,
-    'plus-pro-components': CDN + `/plus-pro-components/index.mjs`
+    'plus-pro-components': CDN + `/plus-pro-components/index.mjs`,
+    '@element-plus/icons-vue': CDN + `/@element-plus/icons-vue/dist/index.js`
   }
 })
 
