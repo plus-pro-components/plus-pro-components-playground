@@ -1,5 +1,6 @@
 import { getCurrentInstance } from 'vue'
 import PlusProComponents from 'plus-pro-components'
+import ElementPlus from 'element-plus'
 
 const version = '2.3.4'
 
@@ -20,6 +21,7 @@ export function setupPlusProComponents() {
   if (installed) return
   const instance = getCurrentInstance()
   instance.appContext.app.use(PlusProComponents)
+  instance.appContext.app.use(ElementPlus)
   installed = true
 }
 

@@ -14,6 +14,8 @@ import mainTemplate from './template/main.vue?raw'
 import AppTemplate from './template/welcome.vue?raw'
 import PlusProComponentsTemplate from './template/plus-pro-components.js?raw'
 
+import { atou } from './utils'
+
 const CDN = 'https://unpkg.com'
 const MAIN_FILE = 'src/PlaygroundMain.vue'
 const APP_FILE = 'src/App.vue'
@@ -58,10 +60,18 @@ store.setImportMap({
   }
 })
 
+let Template = AppTemplate
+
+if (location.hash.slice(1)) {
+  const res = atou(location.hash.slice(1))
+  const data = JSON.parse(res)
+  Template = data['App.vue']
+}
+
 store
   .setFiles({
     ...store.getFiles(),
-    [APP_FILE]: AppTemplate,
+    [APP_FILE]: Template,
     [MAIN_FILE]: mainTemplate,
     [PPC_FILE]: PlusProComponentsTemplate
   })
