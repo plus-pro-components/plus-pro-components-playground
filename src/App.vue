@@ -144,6 +144,9 @@ const changePPCVersion = (v: string = 'latest') => {
     }
   })
 
+  store.state.files[MAIN_FILE].hidden = true
+  store.state.files[PPC_FILE].hidden = true
+
   const url = `${location.origin}${location.pathname}#${store.serialize()}`
   history.replaceState({}, '', url)
 }
