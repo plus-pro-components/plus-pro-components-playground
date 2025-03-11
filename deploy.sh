@@ -4,10 +4,15 @@
 set -e
 
 # build
-npm run build
+# npm run build
 
 # navigate into the build output directory
 cd ./dist
 
-# rsync -av --exclude=".*" ./  root@39.103.160.178:/root/plus-pro-components-playground
+git init
+git add -A
+git commit -m 'deploy'
+
+git push -f https://github.com/plus-pro-components/plus-pro-components-playground.git master:gh-pages
+
 cd -
