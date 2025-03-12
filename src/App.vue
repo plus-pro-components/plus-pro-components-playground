@@ -21,8 +21,6 @@ const MAIN_FILE = 'src/PlaygroundMain.vue'
 const APP_FILE = 'src/App.vue'
 const PPC_FILE = 'src/plus-pro-components.js'
 
-const version = '2.3.4'
-
 const setVH = () => {
   document.documentElement.style.setProperty('--vh', window.innerHeight + `px`)
 }
@@ -55,10 +53,11 @@ const store = new ReplStore({
 store.setImportMap({
   imports: {
     ...store.getImportMap().imports,
-    'element-plus': CDN + `/element-plus@${version}/dist/index.full.mjs`,
+    'element-plus': CDN + `/element-plus/dist/index.full.mjs`,
     'plus-pro-components': CDN + `/plus-pro-components/index.mjs`,
     '@element-plus/icons-vue': CDN + `/@element-plus/icons-vue/dist/index.js`,
-    'lodash-es': CDN + `/lodash-es@4.17.21/lodash.js`,
+    'lodash-es': CDN + `/lodash-es@4.17.21/lodash.js`
+    // '@plus-pro-components/utils': CDN + `/@plus-pro-components/utils/index.mjs`
   }
 })
 
@@ -151,6 +150,29 @@ const changePPCVersion = (v: string = 'latest') => {
   const url = `${location.origin}${location.pathname}#${store.serialize()}`
   history.replaceState({}, '', url)
 }
+//  修改版本
+const changeElVersion = (v: string = 'latest') => {
+  const current = CDN + `/element-plus@${v}`
+
+  const link = current + `/dist/index.css`
+  const code = PlusProComponentsTemplate.replace(CDN + '/element-plus/dist/index.css', link)
+  const file = new File(PPC_FILE, code, import.meta.env.DEV)
+  store.state.files[PPC_FILE] = file
+  compileFile(store, file).then((errs: any) => (store.state.errors = errs))
+
+  store.setImportMap({
+    imports: {
+      ...store.getImportMap().imports,
+      'element-plus': current + `/dist/index.full.mjs`
+    }
+  })
+
+  store.state.files[MAIN_FILE].hidden = true
+  store.state.files[PPC_FILE].hidden = true
+
+  const url = `${location.origin}${location.pathname}#${store.serialize()}`
+  history.replaceState({}, '', url)
+}
 
 onMounted(() => {
   const cls = document.documentElement.classList
@@ -167,6 +189,7 @@ onMounted(() => {
     @toggle-dev="toggleDevMode"
     @toggle-ssr="toggleSSR"
     @changePPCVersion="changePPCVersion"
+    @changeElVersion="changeElVersion"
   />
   <Repl
     :theme="theme"

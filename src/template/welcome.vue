@@ -5,11 +5,11 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue'
-import type { OptionsRow } from 'plus-pro-components'
+import type { OptionsRow, RecordType } from 'plus-pro-components'
 import { PlusRadio } from 'plus-pro-components'
 
 type State = {
-  options: OptionsRow[]
+  options: OptionsRow<RecordType>[]
   value: number
 }
 

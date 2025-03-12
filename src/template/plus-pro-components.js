@@ -2,8 +2,6 @@ import { getCurrentInstance } from 'vue'
 import PlusProComponents from 'plus-pro-components'
 import ElementPlus from 'element-plus'
 
-const version = '2.3.4'
-
 const createLink = (resolve, reject, href) => {
   const link = document.createElement('link')
   link.rel = 'stylesheet'
@@ -33,6 +31,6 @@ export function loadStyle() {
 
 export function loadEPStyle() {
   return new Promise((resolve, reject) => {
-    createLink(resolve, reject, `https://unpkg.com/element-plus@${version}/dist/index.css`)
+    createLink(resolve, reject, `https://unpkg.com/element-plus/dist/index.css`)
   })
 }

@@ -1,6 +1,6 @@
 {
   "name": "@plus-pro-components/playground",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -21,7 +21,7 @@
     "execa": "^8.0.1",
     "file-saver": "^2.0.5",
     "jszip": "^3.10.1",
-    "plus-pro-components": "0.0.1-beta.12",
+    "plus-pro-components": "0.1.21",
     "vite-plugin-compression": "^0.5.1",
     "vue": "^3.3.4"
   }

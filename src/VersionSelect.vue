@@ -40,10 +40,10 @@ async function fetchVersions(): Promise<string[]> {
       }
     }
     return filteredVersions
-  } else if (props.pkg === 'typescript') {
-    return versions.filter(v => !v.includes('dev') && !v.includes('insiders'))
+  } else if (props.pkg === 'element-plus') {
+    return versions.filter(v => !v.includes('alpha') && !v.includes('beta'))
   } else if (props.pkg === 'plus-pro-components') {
-    return versions.filter(v => !v.includes('alpha'))
+    return versions.filter(v => !v.includes('alpha') && !v.includes('beta'))
   }
   return versions
 }

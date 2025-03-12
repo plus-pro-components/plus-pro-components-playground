@@ -14,7 +14,13 @@ const props = defineProps<{
   dev: boolean
   ssr: boolean
 }>()
-const emit = defineEmits(['toggle-theme', 'toggle-ssr', 'toggle-dev', 'changePPCVersion'])
+const emit = defineEmits([
+  'toggle-theme',
+  'toggle-ssr',
+  'toggle-dev',
+  'changePPCVersion',
+  'changeElVersion'
+])
 
 // eslint-disable-next-line vue/no-setup-props-destructure
 const { store } = props
@@ -22,6 +28,7 @@ const { store } = props
 const currentCommit = 'latest'
 const vueVersion = ref(`@${currentCommit}`)
 const plusProComponentsVersion = ref('latest')
+const elementPlusVersion = ref('latest')
 
 function setPlusProComponentsVersion(v: string) {
   emit('changePPCVersion', v)
@@ -29,6 +36,13 @@ function setPlusProComponentsVersion(v: string) {
     'plus-pro-components': v
   }
   plusProComponentsVersion.value = v
+}
+function setElementPlusVersion(v: string) {
+  emit('changeElVersion', v)
+  store.state.dependencyVersion = {
+    'element-plus': v
+  }
+  elementPlusVersion.value = v
 }
 
 async function setVueVersion(v: string) {
@@ -70,13 +84,14 @@ function toggleDark() {
       <VersionSelect
         :model-value="plusProComponentsVersion"
         pkg="plus-pro-components"
-        label="PlusProComponents Version"
+        label="plus-pro-components Version"
         @update:model-value="setPlusProComponentsVersion"
       />
       <VersionSelect
-        v-model="store.state.typescriptVersion"
-        pkg="typescript"
-        label="TypeScript Version"
+        v-model="elementPlusVersion"
+        pkg="element-plus"
+        label="element-plus Version"
+        @update:model-value="setElementPlusVersion"
       />
       <VersionSelect
         :model-value="vueVersion"
